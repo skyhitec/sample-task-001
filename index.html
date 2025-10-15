@@ -1,20 +1,81 @@
 <!doctype html>
 <html>
-<head><meta charset="utf-8"><title>{title}</title></head>
+<head>
+  <meta charset="utf-8">
+  <title>Create a demo webpage showing a welcome message</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background: linear-gradient(135deg, #ece9e6, #ffffff);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      margin: 0;
+      color: #333;
+    }
+    h1 {
+      font-size: 2rem;
+      margin-bottom: 1rem;
+      text-align: center;
+      color: #222;
+    }
+    img {
+      max-width: 80%;
+      border-radius: 10px;
+      margin-bottom: 1rem;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    }
+    input {
+      padding: 0.5rem 1rem;
+      font-size: 1rem;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+      width: 200px;
+      margin-right: 0.5rem;
+    }
+    button {
+      padding: 0.5rem 1.2rem;
+      background-color: #0078d7;
+      color: white;
+      font-size: 1rem;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      transition: background-color 0.3s;
+    }
+    button:hover {
+      background-color: #005ea0;
+    }
+    #result {
+      margin-top: 1rem;
+      font-weight: bold;
+    }
+  </style>
+</head>
 <body>
-  <h1>{title}</h1>
-  <img id="sample-img" style="max-width:90%;height:auto;" />
+  <h1>Create a demo webpage showing a welcome message</h1>
+  <img id="sample-img" style="display:none;" />
   <input id="solution" placeholder="Enter solution" />
   <button id="submit">Submit</button>
   <div id="result"></div>
+
 <script>
 const params = new URLSearchParams(location.search);
 const q = params.get('url');
 const img = document.getElementById('sample-img');
-if (q) img.src = q;
-else img.src = "{attachment_url}";
-document.getElementById('submit').onclick = ()=> {
-  document.getElementById('result').innerText = document.getElementById('solution').value;
+if (q) {
+  img.src = q;
+  img.style.display = 'block';
+} else if ("") {
+  img.src = "";
+  img.style.display = 'block';
+}
+
+document.getElementById('submit').onclick = () => {
+  const val = document.getElementById('solution').value;
+  document.getElementById('result').innerText = "You entered: " + val;
 };
 </script>
 </body>
